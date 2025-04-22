@@ -1,62 +1,69 @@
+
 import React from 'react';
+import { Card, CardContent } from "@/components/ui/card";
 
 interface FoundationCardProps {
+  imageUrl: string;
   title: string;
   description: string;
-  image: string;
 }
 
-const FoundationCard: React.FC<FoundationCardProps> = ({ title, description, image }) => {
+const FoundationCard: React.FC<FoundationCardProps> = ({ imageUrl, title, description }) => {
   return (
-    <div className="service-card">
-      <img src={image} alt={title} />
-      <div className="service-card-content">
-        <h3 className="service-card-title">{title}</h3>
-        <p className="service-card-description">{description}</p>
+    <Card className="overflow-hidden">
+      <div className="h-48">
+        <img src={imageUrl || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
       </div>
-    </div>
+      <CardContent className="p-4">
+        <h3 className="font-semibold mb-2">{title}</h3>
+        <p className="text-gray-600 text-sm">{description}</p>
+      </CardContent>
+    </Card>
   );
 };
 
 const FoundationSection: React.FC = () => {
   const foundationTypes = [
     {
+      imageUrl: "/placeholder.svg",
       title: "Ленточный",
-      description: "Традиционный тип фундамента в виде бетонной ленты по периметру и внутренним несущим стенам. Высокая надежность и равномерное распределение нагрузки.",
-      image: "/placeholder.svg"
+      description: "Классический тип фундамента, распределяющий нагрузку по периметру здания. Подходит для большинства грунтов и конструкций."
     },
     {
+      imageUrl: "/placeholder.svg",
       title: "Столбчатый",
-      description: "Экономичный вариант на основе бетонных столбов, размещенных в ключевых точках нагрузки. Идеален для легких построек на стабильных грунтах.",
-      image: "/placeholder.svg"
+      description: "Экономичное решение, состоящее из отдельных опор. Идеально для легких конструкций и участков с перепадами высот."
     },
     {
+      imageUrl: "/placeholder.svg",
       title: "Плитный",
-      description: "Монолитная железобетонная плита, распределяющая нагрузку по всей площади. Лучший выбор для проблемных грунтов и зданий с высокой нагрузкой.",
-      image: "/placeholder.svg"
+      description: "Монолитная железобетонная плита, равномерно распределяющая нагрузку. Оптимален для слабых и пучинистых грунтов."
     },
     {
+      imageUrl: "/placeholder.svg",
       title: "Свайный",
-      description: "Система бетонных или металлических свай, передающих нагрузку на глубокие слои грунта. Оптимален для слабых, проседающих и подвижных грунтов.",
-      image: "/placeholder.svg"
+      description: "Фундамент на опорных элементах, погруженных в грунт. Подходит для сложных грунтов и обеспечивает высокую устойчивость."
     }
   ];
 
   return (
-    <section id="фундамент" className="py-10 bg-secondary">
+    <section id="фундамент" className="py-16 bg-white relative">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">ФУНДАМЕНТ</h2>
-        <div className="card-container">
-          {foundationTypes.map((item, index) => (
-            <FoundationCard 
-              key={index} 
-              title={item.title} 
-              description={item.description} 
-              image={item.image} 
-            />
+        <h2 className="text-5xl font-bold text-primary mb-10">ФУНДАМЕНТ</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {foundationTypes.map((type, index) => (
+            <FoundationCard key={index} {...type} />
           ))}
         </div>
       </div>
+
+      {/* Декоративная линия */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200"></div>
+      
+      {/* Декоративные прямоугольники */}
+      <div className="absolute right-1/4 top-10 w-16 h-40 bg-gray-100"></div>
+      <div className="absolute left-1/3 bottom-20 w-20 h-32 bg-gray-100"></div>
     </section>
   );
 };

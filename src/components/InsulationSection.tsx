@@ -1,62 +1,69 @@
+
 import React from 'react';
+import { Card, CardContent } from "@/components/ui/card";
 
 interface InsulationCardProps {
+  imageUrl: string;
   title: string;
   description: string;
-  image: string;
 }
 
-const InsulationCard: React.FC<InsulationCardProps> = ({ title, description, image }) => {
+const InsulationCard: React.FC<InsulationCardProps> = ({ imageUrl, title, description }) => {
   return (
-    <div className="service-card">
-      <img src={image} alt={title} />
-      <div className="service-card-content">
-        <h3 className="service-card-title">{title}</h3>
-        <p className="service-card-description">{description}</p>
+    <Card className="overflow-hidden">
+      <div className="h-48">
+        <img src={imageUrl || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
       </div>
-    </div>
+      <CardContent className="p-4">
+        <h3 className="font-semibold mb-2">{title}</h3>
+        <p className="text-gray-600 text-sm">{description}</p>
+      </CardContent>
+    </Card>
   );
 };
 
 const InsulationSection: React.FC = () => {
   const insulationTypes = [
     {
+      imageUrl: "/placeholder.svg",
       title: "Утепление минеральной ватой",
-      description: "Экологичный и негорючий материал, обеспечивает отличную тепло- и звукоизоляцию. Легко монтируется, позволяет стенам дышать, но требует защиты от влаги.",
-      image: "/placeholder.svg"
+      description: "Эффективный материал для теплоизоляции с отличными звукоизоляционными свойствами. Не горюч, экологичен, долговечен."
     },
     {
+      imageUrl: "/placeholder.svg",
       title: "Утепление пенофолом",
-      description: "Тонкий отражающий материал с высокой теплоизоляцией, идеален для помещений с ограниченным пространством. Защищает от конденсата и снижает теплопотери.",
-      image: "/placeholder.svg"
+      description: "Фольгированный материал, отражающий тепловое излучение. Отличается легкостью монтажа и высокой эффективностью."
     },
     {
+      imageUrl: "/placeholder.svg",
       title: "Утепление пенополиуретаном (ППУ)",
-      description: "Бесшовное напыляемое утепление с высокой адгезией, заполняет все щели. Обеспечивает превосходную теплоизоляцию даже при малой толщине слоя.",
-      image: "/placeholder.svg"
+      description: "Бесшовный метод утепления, создающий монолитный слой. Обладает высокой адгезией и не имеет мостиков холода."
     },
     {
+      imageUrl: "/placeholder.svg",
       title: "Утепление «Сэндвич»",
-      description: "Многослойные панели с утеплителем между слоями, обеспечивают высокую энергоэффективность. Быстрый монтаж и долговечность конструкции.",
-      image: "/placeholder.svg"
+      description: "Двухслойные панели с утеплителем между ними. Обеспечивает высокую скорость монтажа и отличные теплоизоляционные характеристики."
     }
   ];
 
   return (
-    <section id="утепление" className="py-10">
+    <section id="утепление" className="py-16 bg-white relative">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">УТЕПЛЕНИЕ</h2>
-        <div className="card-container">
-          {insulationTypes.map((item, index) => (
-            <InsulationCard 
-              key={index} 
-              title={item.title} 
-              description={item.description} 
-              image={item.image} 
-            />
+        <h2 className="text-5xl font-bold text-primary mb-10">УТЕПЛЕНИЕ</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {insulationTypes.map((type, index) => (
+            <InsulationCard key={index} {...type} />
           ))}
         </div>
       </div>
+
+      {/* Декоративная линия */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200"></div>
+      
+      {/* Декоративные прямоугольники */}
+      <div className="absolute right-1/4 top-10 w-16 h-40 bg-gray-100"></div>
+      <div className="absolute left-1/3 bottom-20 w-20 h-32 bg-gray-100"></div>
     </section>
   );
 };
