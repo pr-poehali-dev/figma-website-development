@@ -1,53 +1,52 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail } from 'lucide-react';
+import { Phone, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white shadow-sm py-2">
       <div className="container mx-auto px-4">
-        {/* Верхняя панель с контактами */}
-        <div className="flex justify-between items-center py-2 border-b">
-          <div className="flex items-center space-x-4">
-            <a href="tel:+74951234567" className="text-sm flex items-center text-gray-600 hover:text-primary">
-              <Phone size={16} className="mr-1" />
-              +7 (495) 123-45-67
-            </a>
-            <a href="mailto:info@metalkonstruktsii.ru" className="text-sm flex items-center text-gray-600 hover:text-primary">
-              <Mail size={16} className="mr-1" />
-              info@metalkonstruktsii.ru
-            </a>
+        <div className="flex justify-between items-center">
+          <div className="flex items-center">
+            <Link to="/" className="mr-8">
+              <img src="/placeholder.svg" alt="Логотип" className="h-12" />
+            </Link>
+            
+            <nav className="hidden lg:block">
+              <ul className="flex space-x-6">
+                <li><Link to="/" className="text-gray-800 hover:text-primary text-sm">Главная</Link></li>
+                <li><Link to="/#преимущества" className="text-gray-800 hover:text-primary text-sm">Преимущества технологии</Link></li>
+                <li>
+                  <Link to="/#проекты" className="text-gray-800 hover:text-primary text-sm border border-primary px-3 py-1 rounded">
+                    Реализованные проекты
+                  </Link>
+                </li>
+                <li><Link to="/#утепление" className="text-gray-800 hover:text-primary text-sm">Утепление</Link></li>
+                <li><Link to="/#фундамент" className="text-gray-800 hover:text-primary text-sm">Фундамент</Link></li>
+                <li><Link to="/#контакты" className="text-gray-800 hover:text-primary text-sm">Контакты</Link></li>
+                <li><Link to="/о-компании" className="text-gray-800 hover:text-primary text-sm">О компании</Link></li>
+              </ul>
+            </nav>
           </div>
-          <div>
-            <Button variant="ghost" size="sm">RU</Button>
-            <Button variant="ghost" size="sm">EN</Button>
+          
+          <div className="flex items-center space-x-6">
+            <div className="flex items-center">
+              <Search size={18} className="text-gray-500 mr-2" />
+            </div>
+            
+            <div className="flex items-center">
+              <a href="tel:+74951234567" className="text-sm flex items-center hover:text-primary">
+                <Phone size={18} className="mr-1" />
+                <span>8 (495) 123-45-67</span>
+              </a>
+            </div>
+            
+            <Button className="bg-primary hover:bg-primary/90 text-white text-sm px-4 py-1 h-auto">
+              Заказать звонок
+            </Button>
           </div>
-        </div>
-        
-        {/* Основная навигация */}
-        <div className="flex justify-between items-center py-4">
-          <Link to="/" className="flex items-center space-x-2">
-            {/* Лого компании */}
-            <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
-            <span className="font-bold text-xl">МеталлКонструкции</span>
-          </Link>
-          
-          <nav className="hidden md:block">
-            <ul className="flex space-x-6">
-              <li><Link to="/" className="text-gray-700 hover:text-primary">Главная</Link></li>
-              <li><Link to="/#преимущества" className="text-gray-700 hover:text-primary">О технологии</Link></li>
-              <li><Link to="/#проекты" className="text-gray-700 hover:text-primary">Проекты</Link></li>
-              <li><Link to="/#утепление" className="text-gray-700 hover:text-primary">Утепление</Link></li>
-              <li><Link to="/#фундамент" className="text-gray-700 hover:text-primary">Фундамент</Link></li>
-              <li><Link to="/#контакты" className="text-gray-700 hover:text-primary">Контакты</Link></li>
-            </ul>
-          </nav>
-          
-          <Button className="bg-red-500 hover:bg-red-600">
-            Заказать расчет
-          </Button>
         </div>
       </div>
     </header>

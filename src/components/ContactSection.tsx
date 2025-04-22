@@ -1,80 +1,73 @@
 
 import React from 'react';
-import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Twitter, Instagram } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const ContactSection: React.FC = () => {
   return (
-    <section id="контакты" className="py-16 bg-white relative">
+    <section id="контакты" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl font-bold text-primary mb-10">КОНТАКТЫ</h2>
+        <h2 className="text-4xl font-bold mb-10">КОНТАКТЫ</h2>
         
-        <div className="flex flex-col md:flex-row gap-10">
-          <div className="md:w-2/3">
-            <div className="bg-gray-100 rounded-md overflow-hidden h-[400px]">
-              {/* Здесь можно заменить на реальную карту с Google Maps или Яндекс.Карт */}
-              <div className="w-full h-full bg-cover bg-center flex items-center justify-center text-gray-400"
-                   style={{backgroundImage: "url('/placeholder.svg')"}}>
-                Карта с расположением офиса
-              </div>
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Карта */}
+          <div className="w-full md:w-2/3 h-[400px] bg-gray-200">
+            {/* Здесь будет карта (например, Google Maps или Яндекс Карты) */}
+            <div className="w-full h-full flex items-center justify-center text-gray-500">
+              Интерактивная карта
             </div>
           </div>
           
-          <div className="md:w-1/3">
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-semibold mb-2">Адрес офиса:</h3>
-                <p className="flex items-center">
-                  <MapPin size={18} className="mr-2 text-gray-600" />
-                  г. Москва, ул. Строителей, 15
-                </p>
-              </div>
+          {/* Информация */}
+          <div className="w-full md:w-1/3">
+            <div className="bg-light p-6 h-full">
+              <h3 className="text-xl font-semibold mb-6">Наши координаты</h3>
               
-              <div>
-                <h3 className="font-semibold mb-2">Телефоны:</h3>
-                <p className="flex items-center mb-1">
-                  <Phone size={18} className="mr-2 text-gray-600" />
-                  +7 (495) 123-45-67
-                </p>
-                <p className="flex items-center">
-                  <Phone size={18} className="mr-2 text-gray-600" />
-                  +7 (495) 765-43-21
-                </p>
-              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex">
+                  <MapPin size={20} className="text-primary mr-3 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-medium">Наш адрес:</p>
+                    <p className="text-gray-600">г. Москва, ул. Промышленная, 11, стр. 3</p>
+                  </div>
+                </li>
+                
+                <li className="flex">
+                  <Phone size={20} className="text-primary mr-3 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-medium">Телефон:</p>
+                    <p className="text-gray-600">+7 (495) 123-45-67</p>
+                  </div>
+                </li>
+                
+                <li className="flex">
+                  <Mail size={20} className="text-primary mr-3 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-medium">Email:</p>
+                    <p className="text-gray-600">info@metalkonstruktsii.ru</p>
+                  </div>
+                </li>
+              </ul>
               
-              <div>
-                <h3 className="font-semibold mb-2">Email:</h3>
-                <p className="flex items-center">
-                  <Mail size={18} className="mr-2 text-gray-600" />
-                  info@metalkonstruktsii.ru
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-2">Социальные сети:</h3>
-                <div className="flex space-x-4">
-                  <Button variant="ghost" size="icon" className="rounded-full">
-                    <Facebook size={20} />
-                  </Button>
-                  <Button variant="ghost" size="icon" className="rounded-full">
-                    <Twitter size={20} />
-                  </Button>
-                  <Button variant="ghost" size="icon" className="rounded-full">
-                    <Instagram size={20} />
-                  </Button>
-                </div>
-              </div>
-              
-              <Button className="bg-red-500 hover:bg-red-600 w-full">
-                ЗАКАЗАТЬ ЗВОНОК
+              <Button className="bg-primary hover:bg-primary/90 w-full mb-6">
+                Построить маршрут
               </Button>
+              
+              <div className="flex space-x-3">
+                <a href="#" className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300">
+                  <Facebook size={16} />
+                </a>
+                <a href="#" className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300">
+                  <Twitter size={16} />
+                </a>
+                <a href="#" className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300">
+                  <Instagram size={16} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
-      {/* Декоративная линия */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200"></div>
     </section>
   );
 };

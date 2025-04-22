@@ -1,69 +1,68 @@
 
 import React from 'react';
-import { Card, CardContent } from "@/components/ui/card";
 
 interface InsulationCardProps {
-  imageUrl: string;
+  image: string;
   title: string;
   description: string;
 }
 
-const InsulationCard: React.FC<InsulationCardProps> = ({ imageUrl, title, description }) => {
+const InsulationCard: React.FC<InsulationCardProps> = ({ image, title, description }) => {
   return (
-    <Card className="overflow-hidden">
-      <div className="h-48">
-        <img src={imageUrl || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
-      </div>
-      <CardContent className="p-4">
+    <div className="bg-white shadow">
+      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      <div className="p-4">
         <h3 className="font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600 text-sm">{description}</p>
-      </CardContent>
-    </Card>
+        <p className="text-sm text-gray-600">{description}</p>
+      </div>
+    </div>
   );
 };
 
 const InsulationSection: React.FC = () => {
   const insulationTypes = [
     {
-      imageUrl: "/placeholder.svg",
+      image: "/placeholder.svg",
       title: "Утепление минеральной ватой",
-      description: "Эффективный материал для теплоизоляции с отличными звукоизоляционными свойствами. Не горюч, экологичен, долговечен."
+      description: "Эффективный и экономичный способ теплоизоляции бескаркасных ангаров. Минеральная вата обладает высокими теплоизоляционными свойствами и пожаробезопасностью."
     },
     {
-      imageUrl: "/placeholder.svg",
+      image: "/placeholder.svg",
       title: "Утепление пенофолом",
-      description: "Фольгированный материал, отражающий тепловое излучение. Отличается легкостью монтажа и высокой эффективностью."
+      description: "Тонкая теплоизоляция с отражающим эффектом. Пенофол представляет собой вспененный полиэтилен, покрытый с одной или двух сторон алюминиевой фольгой."
     },
     {
-      imageUrl: "/placeholder.svg",
+      image: "/placeholder.svg",
       title: "Утепление пенополиуретаном (ППУ)",
-      description: "Бесшовный метод утепления, создающий монолитный слой. Обладает высокой адгезией и не имеет мостиков холода."
+      description: "Бесшовная напыляемая изоляция, обеспечивающая высокую теплоэффективность и герметичность. ППУ имеет низкий коэффициент теплопроводности."
     },
     {
-      imageUrl: "/placeholder.svg",
+      image: "/placeholder.svg",
       title: "Утепление «Сэндвич»",
-      description: "Двухслойные панели с утеплителем между ними. Обеспечивает высокую скорость монтажа и отличные теплоизоляционные характеристики."
+      description: "Многослойная теплоизоляция для бескаркасных ангаров, состоящая из двух слоев профилированного металла с утеплителем между ними."
     }
   ];
 
   return (
     <section id="утепление" className="py-16 bg-white relative">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl font-bold text-primary mb-10">УТЕПЛЕНИЕ</h2>
+        <h2 className="text-4xl font-bold mb-12">УТЕПЛЕНИЕ</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {insulationTypes.map((type, index) => (
-            <InsulationCard key={index} {...type} />
+            <InsulationCard 
+              key={index} 
+              image={type.image} 
+              title={type.title} 
+              description={type.description} 
+            />
           ))}
         </div>
       </div>
-
-      {/* Декоративная линия */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200"></div>
       
-      {/* Декоративные прямоугольники */}
-      <div className="absolute right-1/4 top-10 w-16 h-40 bg-gray-100"></div>
-      <div className="absolute left-1/3 bottom-20 w-20 h-32 bg-gray-100"></div>
+      {/* Декоративные элементы */}
+      <div className="absolute right-0 top-1/3 bottom-0 w-1/3 bg-gray-100/50"></div>
+      <div className="absolute left-1/4 top-1/3 w-16 h-32 bg-gray-100/70"></div>
     </section>
   );
 };

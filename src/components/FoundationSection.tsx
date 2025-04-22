@@ -1,69 +1,68 @@
 
 import React from 'react';
-import { Card, CardContent } from "@/components/ui/card";
 
 interface FoundationCardProps {
-  imageUrl: string;
+  image: string;
   title: string;
   description: string;
 }
 
-const FoundationCard: React.FC<FoundationCardProps> = ({ imageUrl, title, description }) => {
+const FoundationCard: React.FC<FoundationCardProps> = ({ image, title, description }) => {
   return (
-    <Card className="overflow-hidden">
-      <div className="h-48">
-        <img src={imageUrl || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
-      </div>
-      <CardContent className="p-4">
+    <div className="bg-white shadow">
+      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      <div className="p-4">
         <h3 className="font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600 text-sm">{description}</p>
-      </CardContent>
-    </Card>
+        <p className="text-sm text-gray-600">{description}</p>
+      </div>
+    </div>
   );
 };
 
 const FoundationSection: React.FC = () => {
   const foundationTypes = [
     {
-      imageUrl: "/placeholder.svg",
+      image: "/placeholder.svg",
       title: "Ленточный",
-      description: "Классический тип фундамента, распределяющий нагрузку по периметру здания. Подходит для большинства грунтов и конструкций."
+      description: "Классический тип фундамента, представляющий собой железобетонную ленту по периметру сооружения. Обеспечивает равномерное распределение нагрузки."
     },
     {
-      imageUrl: "/placeholder.svg",
-      title: "Столбчатый",
-      description: "Экономичное решение, состоящее из отдельных опор. Идеально для легких конструкций и участков с перепадами высот."
-    },
-    {
-      imageUrl: "/placeholder.svg",
-      title: "Плитный",
-      description: "Монолитная железобетонная плита, равномерно распределяющая нагрузку. Оптимален для слабых и пучинистых грунтов."
-    },
-    {
-      imageUrl: "/placeholder.svg",
+      image: "/placeholder.svg",
       title: "Свайный",
-      description: "Фундамент на опорных элементах, погруженных в грунт. Подходит для сложных грунтов и обеспечивает высокую устойчивость."
+      description: "Экономичный и быстровозводимый фундамент из забивных или винтовых свай. Идеально подходит для сложных грунтовых условий и заболоченных участков."
+    },
+    {
+      image: "/placeholder.svg",
+      title: "Плитный",
+      description: "Монолитная железобетонная плита под всей площадью сооружения. Отличается высокой прочностью и устойчивостью к деформациям, подходит для неустойчивых грунтов."
+    },
+    {
+      image: "/placeholder.svg",
+      title: "Свайный",
+      description: "Комбинированный фундамент из железобетонных балок на свайных опорах. Сочетает преимущества свайного и ленточного фундаментов."
     }
   ];
 
   return (
-    <section id="фундамент" className="py-16 bg-white relative">
+    <section id="фундамент" className="py-16 bg-light relative">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl font-bold text-primary mb-10">ФУНДАМЕНТ</h2>
+        <h2 className="text-4xl font-bold mb-12">ФУНДАМЕНТ</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {foundationTypes.map((type, index) => (
-            <FoundationCard key={index} {...type} />
+            <FoundationCard 
+              key={index} 
+              image={type.image} 
+              title={type.title} 
+              description={type.description} 
+            />
           ))}
         </div>
       </div>
-
-      {/* Декоративная линия */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200"></div>
       
-      {/* Декоративные прямоугольники */}
-      <div className="absolute right-1/4 top-10 w-16 h-40 bg-gray-100"></div>
-      <div className="absolute left-1/3 bottom-20 w-20 h-32 bg-gray-100"></div>
+      {/* Декоративные элементы */}
+      <div className="absolute left-0 top-1/3 bottom-0 w-1/3 bg-gray-100/50"></div>
+      <div className="absolute right-1/4 top-1/3 w-16 h-32 bg-gray-100/70"></div>
     </section>
   );
 };

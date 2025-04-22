@@ -1,35 +1,43 @@
 
 import React from 'react';
-import { Card } from "@/components/ui/card";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Certificates: React.FC = () => {
-  const certificates = Array(6).fill(null).map((_, i) => ({
-    id: i + 1,
-    imageUrl: "/placeholder.svg"
-  }));
-
   return (
-    <section className="py-16 bg-white relative">
+    <section className="py-16 bg-light">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl font-bold text-primary mb-10">СЕРТИФИКАТЫ<br />И БЛАГОДАРСТВЕННЫЕ ПИСЬМА</h2>
+        <h2 className="text-4xl font-bold mb-10">
+          СЕРТИФИКАТЫ<br />
+          И БЛАГОДАРСТВЕННЫЕ ПИСЬМА
+        </h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {certificates.map((cert) => (
-            <Card key={cert.id} className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
-              <div className="aspect-[3/4] w-full">
+        <div className="relative">
+          {/* Навигация слайдера */}
+          <div className="flex justify-end mb-6">
+            <div className="flex space-x-2">
+              <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100">
+                <ChevronLeft size={18} />
+              </button>
+              <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100">
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+          
+          {/* Галерея сертификатов */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+            {[...Array(6)].map((_, index) => (
+              <div key={index} className="bg-white p-2 shadow-sm hover:shadow-md transition-shadow">
                 <img 
-                  src={cert.imageUrl} 
-                  alt={`Сертификат ${cert.id}`} 
-                  className="w-full h-full object-cover" 
+                  src="/placeholder.svg" 
+                  alt={`Сертификат ${index + 1}`} 
+                  className="w-full h-40 object-contain"
                 />
               </div>
-            </Card>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-      
-      {/* Декоративная линия */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200"></div>
     </section>
   );
 };

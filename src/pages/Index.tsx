@@ -14,7 +14,7 @@ import Footer from '@/components/Footer';
 
 const Index: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-pattern">
+    <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow">
         <Hero />
